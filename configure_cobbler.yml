@@ -7,7 +7,6 @@
       dnf:
         name: epel-release
         state: latest
-        become: True
     - name: Install Cobbler dependencies
       dnf:
         name:
@@ -26,4 +25,3 @@
           - dnf-plugins-core 
           - dhcp-server
         state: latest
-        become: True
