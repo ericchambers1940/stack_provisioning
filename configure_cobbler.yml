@@ -1,0 +1,30 @@
+---
+hosts:
+  - all
+
+tasks: 
+
+  - name: Enable EPEL Repository
+    dnf:
+      name: epel-release
+      state: latest
+      become: True
+  - name: Install Cobbler dependencies
+    dnf:
+      name:
+        - createrepo_c 
+        - httpd 
+        - xorriso
+        - mod_ssl 
+        - python3-cheetah 
+        - python3-netaddr 
+        - python3-librepo 
+        - python3-schema 
+        - python3-yaml 
+        - rsync 
+        - syslinux 
+        - tftp-server 
+        - dnf-plugins-core 
+        - dhcp-server
+      state: latest
+      become: True
