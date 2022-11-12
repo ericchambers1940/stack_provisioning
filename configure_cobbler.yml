@@ -25,3 +25,12 @@
           - dnf-plugins-core 
           - dhcp-server
         state: latest
+
+    - name: Enable CRB 
+      command: /usr/bin/crb enable
+      
+    - name: Enable Cobbler Module
+      command: dnf module enable cobbler:13 -y
+      register: result
+      changed_when:
+        - '"Enabling module streams" in result.stdout'
