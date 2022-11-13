@@ -26,11 +26,24 @@
           - dhcp-server
         state: latest
 
-    - name: Enable CRB 
-      command: /usr/bin/crb enable
-      
     - name: Enable Cobbler Module
-      command: dnf module enable cobbler:13 -y
+      command: dnf module enable cobbler:3.3 -y
       register: result
       changed_when:
         - '"Enabling module streams" in result.stdout'
+    
+    - name: Install Cobbler
+      dnf:
+        name:
+        - cobbler
+
+    - name: Start Cobbler Services
+      service:
+        name: {{ item }} 
+        state: started 
+        enabled: yes 
+        with_item: 
+          - httpd 
+          - dhcpd
+          - tftp
+          - cobblerd
