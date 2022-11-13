@@ -42,7 +42,7 @@
         name: "{{ item }}" 
         state: started 
         enabled: yes 
-      with_item: 
+      with_items: 
         - httpd 
         - dhcpd
         - tftp
