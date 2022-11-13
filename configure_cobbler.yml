@@ -39,7 +39,7 @@
 
     - name: Start Cobbler Services
       service:
-        name: {{ item }} 
+        name: "{{ item }}" 
         state: started 
         enabled: yes 
         with_item: 
