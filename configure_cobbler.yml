@@ -24,6 +24,7 @@
           - tftp-server 
           - dnf-plugins-core 
           - dhcp-server
+          - pykickstart
         state: latest
 
     - name: Enable Cobbler Module
